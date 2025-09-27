@@ -14,7 +14,9 @@ public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String carName;
-    private int releaseYear;
+    private Integer releaseYear;
     private String driverName;
+    private Integer price;
 }

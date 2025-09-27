@@ -3,6 +3,7 @@ package org.example.springmentor.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.springmentor.dto.CarDto;
+import org.example.springmentor.dto.CarUpdateDto;
 import org.example.springmentor.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,13 @@ public class CarController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCar(@RequestBody CarDto carDto) {
-        carService.createCar(carDto);
+    public void createCar(@RequestBody CarUpdateDto carUpdateDto) {
+        carService.createCar(carUpdateDto);
+    }
+
+    @PatchMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CarDto updateValue(@PathVariable Long id, @RequestBody CarUpdateDto carUpdateDto) {
+        return carService.updateCar(id, carUpdateDto);
     }
 }
